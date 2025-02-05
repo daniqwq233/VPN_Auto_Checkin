@@ -66,7 +66,7 @@ def auto_sign():
             # 检查签到结果
             try:    
                 page.wait_for_selector(
-                    "h2:has-text('尊贵的会员')",
+                    "#swal2-title",
                     timeout=15000
                 )  # 检查登录后一些的元素
                 print("✅ 签到成功！")
