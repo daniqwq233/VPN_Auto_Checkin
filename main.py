@@ -86,7 +86,7 @@ def auto_sign():
 
 if __name__ == "__main__":
     for i in range(5):
-        time.sleep(random.randint(500,1000)) # 随机登陆时间
+        time.sleep(random.randint(50,200)) # 随机登陆时间
         auto_sign()
         if Checked:
             print('✅ 第{}次签到成功'.format(i+1))
