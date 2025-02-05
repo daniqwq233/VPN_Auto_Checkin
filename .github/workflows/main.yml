@@ -1,0 +1,32 @@
+name: Auto Checkin
+
+on:
+  schedule:
+    - cron: '13 11 * * *'  # 每天凌晨1点运行
+  workflow_dispatch: # 允许手动触发
+  
+jobs:
+  checkin:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+          pip install playwright
+          playwright install-deps  # 安装浏览器系统依赖
+          playwright install chromium
+      
+      - name: Run checkin script
+        env: 
+          email: ${{ secrets.EMAIL }}
+          pwd: ${{ secrets.PWD }}
+        run: python main.py
