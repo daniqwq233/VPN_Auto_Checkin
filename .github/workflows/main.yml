@@ -11,7 +11,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
+      - uses: szenius/set-timezone@v1.0 # 设置执行环境的时区
+        with:
+          timezoneLinux: "Asia/Shanghai"
+          
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -24,7 +27,8 @@ jobs:
           pip install playwright
           playwright install-deps  # 安装浏览器系统依赖
           playwright install chromium
-      
+
+  
       - name: Run checkin script
         env: 
           email: ${{ secrets.EMAIL }}
