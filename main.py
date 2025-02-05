@@ -12,7 +12,7 @@ PASSWORD = os.getenv("pwd", "YourPWD")
 Checked = False
 
 def sleepTime():
-    return random.randint(10, 15)
+    return random.randint(15, 20)
 
 def auto_sign():
     with sync_playwright() as p:
@@ -70,6 +70,7 @@ def auto_sign():
                     timeout=15000
                 )  # 检查登录后一些的元素
                 print("✅ 签到成功！")
+                Checked = True
             except:
                 print("⚠️ 签到状态未知，请手动确认")
 
@@ -85,7 +86,7 @@ def auto_sign():
 
 if __name__ == "__main__":
     for i in range(5):
-        # time.sleep(random.randint(500,1000)) # 随机登陆时间
+        time.sleep(random.randint(500,1000)) # 随机登陆时间
         auto_sign()
         if Checked:
             print('✅ 第{}次签到成功'.format(i+1))
