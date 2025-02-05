@@ -5,7 +5,7 @@ My VPN auto checkin tool to get some free traffic
 
 配置内容:
 fork后需在https://github.com/*YourGithubID*/VPN_Auto_Checkin页面->Settings->Security->Secrets and variables->Actions->New repository secret中配置两个私密变量
-image
+
 ![image](https://github.com/user-attachments/assets/f696a216-3fc8-44c2-a1f9-d790cc3c9e56)
 
 Name为EMAIL和PWD, 分别为该梯子的账户名和密码, 之后在action页面自行配置运行
