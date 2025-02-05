@@ -1,4 +1,4 @@
-# VPNAutoCheckin
+# VPN_Auto_Checkin
 My VPN auto checkin tool to get some free traffic
 
 自用的梯子自动签到器 需要配置ACTIONS使用
