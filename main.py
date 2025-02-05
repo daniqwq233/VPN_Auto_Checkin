@@ -12,8 +12,7 @@ PASSWORD = os.getenv("pwd", "YourPWD")
 Checked = False
 
 def sleepTime():
-    return random.randint(5, 10)
-
+    return random.randint(10, 15)
 
 def auto_sign():
     with sync_playwright() as p:
@@ -64,17 +63,19 @@ def auto_sign():
                 Checked = True
                 return
 
-            time.sleep(sleepTime())  # 简单等待
             # 检查签到结果
-            success_msg = page.query_selector("div.toast-success >> text=尊贵的会员")
-            if success_msg:
+            try:    
+                page.wait_for_selector(
+                    "h2:has-text('尊贵的会员')",
+                    timeout=15000
+                )  # 检查登录后一些的元素
                 print("✅ 签到成功！")
-            else:
+            except:
                 print("⚠️ 签到状态未知，请手动确认")
 
         except Exception as e:
             print(f"操作失败：{str(e)}")
-            # 可以添加截图功能用于调试
+            # 添加截图功能用于调试
             page.screenshot(path="error.png")
 
         finally:
