@@ -95,5 +95,5 @@ if __name__ == "__main__":
             if i < 4:
                 print('❌ 第{}次签到失败, 重试.....'.format(i+1))
             else:
-                print('❌ 5次签到失败, 请手动检查!')
+                print('❌ 5次签到失败, 请手动检查!!')
                 raise Exception("❌ 5次签到失败, 请手动检查!")
